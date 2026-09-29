@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M1 2l7 7 7-7-2 9H3z%27 fill=%27%23f2c230%27/%3E%3C/svg%3E" />
+    <title>PG Unleashed RX-78-2 · Assembly Manual</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header id="top">
+      <button id="menuBtn" class="icon" title="Steps (S)" aria-label="Toggle step list">☰</button>
+      <div class="brand">
+        <span class="grade">PG UNLEASHED</span>
+        <span class="name">1/60 RX-78-2 GUNDAM</span>
+        <span class="sub">Interactive assembly manual</span>
+      </div>
+      <div class="spacer"></div>
+      <div class="hint">Drag to rotate · Right-drag / two fingers to pan · Wheel / pinch to zoom</div>
+    </header>
+
+    <aside id="sidebar"><nav id="stepList"></nav></aside>
+
+    <main id="viewport">
+      <canvas id="c"></canvas>
+      <div id="loading">Cutting parts from the runners…</div>
+      <div id="tip" hidden></div>
+
+      <section id="card">
+        <div class="cardHead">
+          <span id="phaseBadge" class="badge"></span>
+          <span id="stepNo" class="stepNo"></span>
+          <button id="cardToggle" class="icon small" title="Collapse" aria-label="Collapse step card">▾</button>
+        </div>
+        <div id="cardBody">
+          <div id="section" class="section"></div>
+          <h1 id="title"></h1>
+          <p id="desc"></p>
+          <p id="caution" class="caution" hidden></p>
+          <div id="partsWrap">
+            <div class="label">Parts used <span id="partsCount"></span></div>
+            <div id="parts"></div>
+          </div>
+          <button id="manualThumb" title="Open the manual page">
+            <img id="thumbImg" alt="Manual page" />
+            <span>Manual page <b id="thumbPage"></b> · <em class="scanHint">click to enlarge (M)</em><em class="pdfHint">open in the official PDF ↗</em></span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer id="bar">
+      <div class="transport">
+        <button id="prev" class="icon" title="Previous step (←)">⏮</button>
+        <button id="play" class="icon big" title="Play / pause (Space)">▶</button>
+        <button id="next" class="icon" title="Next step (→)">⏭</button>
+        <button id="replay" class="icon" title="Replay this step (R)">↻</button>
+      </div>
+      <div class="timelineWrap">
+        <div id="timeline"></div>
+        <div id="counter"></div>
+      </div>
+      <div class="opts">
+        <label><input type="checkbox" id="optCam" checked /> Auto camera</label>
+        <label><input type="checkbox" id="optGhost" /> Ghost next</label>
+        <label><input type="checkbox" id="optEdges" checked /> Panel lines</label>
+        <label><input type="checkbox" id="optHatch" /> Open hatches</label>
+        <label><input type="checkbox" id="optLed" /> LED</label>
+        <button id="viewFront" class="chip" title="Front view (F)">Front</button>
+        <button id="viewBack" class="chip" title="Back view (B)">Back</button>
+        <button id="viewFit" class="chip" title="Frame whole model (A)">Fit</button>
+      </div>
+    </footer>
+
+    <div id="modal" hidden>
+      <div class="modalInner">
+        <div class="modalBar">
+          <button id="mPrev" class="icon">‹</button>
+          <span id="mLabel"></span>
+          <button id="mNext" class="icon">›</button>
+          <div class="spacer"></div>
+          <a id="mPdf" href="https://manual.bandai-hobby.net/pdf/1066.pdf" target="_blank" rel="noopener">Open full PDF</a>
+          <button id="mClose" class="icon">✕</button>
+        </div>
+        <div class="modalImg"><img id="mImg" alt="Manual page" /></div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
